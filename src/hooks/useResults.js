@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import wiki from '../api/wiki';
+import axios from 'axios';
 
 export default () => {
     const [results, setResults] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
   
-    const searchAPI = async () => {
-      console.log('Hi there!');
-        const response = await  wiki.get( {
-          params: {
-            list: search,
-            srsearch: userTerm,
-            format: json
-          }
-        });
-        setResults(response.data.search);
+    const searchAPI = async searchInput => {
+      console.log('Hi there!')
+       try{
+          const response = 
+          await axios('https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch='+searchInput+
+          '&format=json');
+          setResults(response.data.query.search);
+          console.log(response.data.query.search);
+      } catch (err) {
+        setErrorMessage('Something went wrong');
       }
-
-    return [searchAPI, results, errorMessage];
   };
-  
+  return [searchAPI, results, errorMessage];
+
+};
