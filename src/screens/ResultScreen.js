@@ -1,52 +1,51 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, FlatList} from 'react-native';
 import useResults from '../hooks/useResults';
 
-const ResultScreen = (search) => {
+const ResultScreen = (search, {navigation}) => {
   const userTerm = (search.navigation.state.params.search);
-  const [searchAPI, response, errorMessage] = useResults();
+  const [searchAPI, results, errorMessage] = useResults();
 
-  useEffect(() => {
+
+    useEffect(() => {
     searchAPI(userTerm);
-  }, []);
+  }, [])
 
-  
-    
-return(
-    <View style={Styles.container}>
-        <Text style={styles.title}>{title}</Text>
+ 
+  return(
+      <View style={styles.container}>
         <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={results}
-        keyExtractor={result => result.id}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('ResultsShow', { id: item.id })
-              }
-            >
-              <ResultsDetail result={item} />
-            </TouchableOpacity>
-          );
-        }}
-      />
-    </View>
+          showsVerticalScrollIndicator
+          data={results}
+          keyExtractor={result => result.pageid}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('ResultsDetail', {item: item.snippet})
+                }
+              >
+                <Text>{item.title}</Text>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
     );
-};
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginLeft: 15,
-    marginBottom: 5
-  },
-  container: {
-    marginBottom: 10
-  }
-});
-
+  };
+  
+  const styles = StyleSheet.create({
+    title: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginLeft: 15,
+      marginBottom: 5
+    },
+    container: {
+      marginBottom: 10
+    }
+  });
+    
+ 
 
 export default ResultScreen;

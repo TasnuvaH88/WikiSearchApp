@@ -6,13 +6,15 @@ const HomeScreen = ({ navigation }) => {
    const handleSubmit = () =>navigation.navigate('Results', {search});
     
     return(
-
+        
         <SearchBar
           search={search}
           onSearch={setSearch}
           onSearchSubmit = {handleSubmit}
-            //navigation.navigate('Results', {search: search})}
+          
           />
+          
+        
     
     );
 };
