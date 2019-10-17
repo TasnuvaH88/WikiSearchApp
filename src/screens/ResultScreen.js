@@ -32,7 +32,7 @@ const ResultScreen = (search, {navigation}) => {
               <Button
                title={item.title}
                 onPress={() => navigation.navigate('ResultsDetail', {pageid: item.pageid})
-                }></Button>
+                }>More Info</Button>
               )
               }}
              />

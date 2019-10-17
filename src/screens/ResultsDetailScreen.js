@@ -1,5 +1,5 @@
 import react, {useState, useEffect} from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Linking } from "react-native";
 
 
 const ResultsDetailScreen = ({navigation}) => {
@@ -7,7 +7,7 @@ const ResultsDetailScreen = ({navigation}) => {
   const pageid = navigation.getParam('pageid');
  
 
-const getInfo = async pageid => {
+const getInfo = async id => {
   const response = await axios.get('https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids='
   +id+'&inprop=url&format=json');
   setResult(response.data.query.pages)
@@ -19,9 +19,11 @@ useEffect(() => {
     <View>
       <Text>{result.title}</Text>
       <Button
-        title="Go Back to Search Screen"
         onPress={() => navigation.navigate('HomeScreen')}
-      ></Button>
+      >Go Back to Search Screen</Button>
+      <Button
+        onPress={() => Linking.openURL('https://www.anthem.com')}>
+      Go to Anthem Site</Button>
     </View>
   );
 };
