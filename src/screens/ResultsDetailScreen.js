@@ -1,23 +1,21 @@
-import react, {useState, useEffect} from "react";
-import { View, Text, Button, Linking } from "react-native";
+import React, {useEffect} from 'react';
+import { View, Text, Button, Linking } from 'react-native';
+import useResult from '../hooks/useResult';
+import { withNavigation } from 'react-navigation';
 
-
-const ResultsDetailScreen = ({navigation}) => {
-  const [result, setResult] = useState(null);
+const ResultsDetailScreen = () => {
   const pageid = navigation.getParam('pageid');
+  const [getInfo, res] = useResult();
  
-
-const getInfo = async id => {
-  const response = await axios.get('https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids='
-  +id+'&inprop=url&format=json');
-  setResult(response.data.query.pages)
-};
 useEffect(() => {
   getInfo(pageid);
 }, []);
+
+
   return (
     <View>
-      <Text>{result.title}</Text>
+      <Text>{res.title}</Text>
+      {errMessage ? <Text>{errMessage}</Text> : null}
       <Button
         onPress={() => navigation.navigate('HomeScreen')}
       >Go Back to Search Screen</Button>
@@ -26,6 +24,8 @@ useEffect(() => {
       Go to Anthem Site</Button>
     </View>
   );
+
+
 };
 
-export default ResultsDetailScreen;
+export default withNavigation(ResultsDetailScreen);

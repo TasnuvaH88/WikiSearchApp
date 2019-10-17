@@ -1,27 +1,22 @@
-import React, { useEffect} from "react";
+import React, { useEffect} from 'react';
 import {
-  Text,
-  TouchableOpacity,
   View,
   StyleSheet,
   FlatList, Button
-} from "react-native";
+} from 'react-native';
 import useResults from '../hooks/useResults';
 import { withNavigation } from 'react-navigation';
 
-const ResultScreen = (search, {navigation}) => {
+const ResultsScreen = (search) => {
   const userTerm = (search.navigation.state.params.search);
   const [searchAPI, results] = useResults();
-  
-  //const [resp, returnURL] = secondCall();
   
 
   useEffect(() => {
     searchAPI(userTerm);
   }, []);
- console.log(results);
  
-
+ 
   return (
     <View style={styles.container}>
        <FlatList
@@ -30,6 +25,7 @@ const ResultScreen = (search, {navigation}) => {
           renderItem={({ item }) => {
             return (
               <Button
+              style={styles.text}
                title={item.title}
                 onPress={() => navigation.navigate('ResultsDetail', {pageid: item.pageid})
                 }>More Info</Button>
@@ -52,4 +48,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(ResultScreen);
+export default withNavigation(ResultsScreen);

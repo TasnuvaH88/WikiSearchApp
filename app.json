@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "search app",
+    "name": "Search App",
     "slug": "wikisearchapp",
     "privacy": "public",
     "sdkVersion": "35.0.0",
@@ -9,6 +9,12 @@
       "android",
       "web"
     ],
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname"
+    },
+    "android": {
+      "package": "com.yourcompany.yourappname"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,8 +29,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    }
+    "description": "A simple search app that is powered by MediaWiki's API",
+    "githubUrl": "https://github.com/TasnuvaH88/WikiSearchApp.git"
   }
 }

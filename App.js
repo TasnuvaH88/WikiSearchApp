@@ -2,13 +2,13 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import {createAppContainer } from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
-import ResultScreen from './src/screens/ResultScreen';
+import ResultsScreen from './src/screens/ResultsScreen';
 import ResultsDetailScreen from './src/screens/ResultsDetailScreen';
 
 const navigatorLinks = createStackNavigator(
   {
     Home: HomeScreen,
-    Results: ResultScreen,
+    Results: ResultsScreen,
     ResultsDetail: ResultsDetailScreen
   },
   {
