@@ -1,22 +1,29 @@
-import react from 'react';
-import { View, Text} from 'react-native';
-import ResultScreen from '../screens/ResultScreen';
-import { createStackNavigator } from 'react-navigation-stack';
-import {createAppContainer } from 'react-navigation';
+import react, {useState, useEffect} from "react";
+import { View, Text, Button } from "react-native";
 
-const ResultsDetailScreen = () => {
-  const itemInfo = navigation.getParam('')
-    return (
-        <View>
-            <Text>Details</Text>
-           <Button
-           title="Go Back to Search Screen"
-           onPress={() => 
-        navigation.navigate('HomeScreen')}></Button>
-        </View>
-        
-    )
 
-}
+const ResultsDetailScreen = ({navigation}) => {
+  const [result, setResult] = useState(null);
+  const pageid = navigation.getParam('pageid');
+ 
+
+const getInfo = async pageid => {
+  const response = await axios.get('https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids='
+  +id+'&inprop=url&format=json');
+  setResult(response.data.query.pages)
+};
+useEffect(() => {
+  getInfo(pageid);
+}, []);
+  return (
+    <View>
+      <Text>{result.title}</Text>
+      <Button
+        title="Go Back to Search Screen"
+        onPress={() => navigation.navigate('HomeScreen')}
+      ></Button>
+    </View>
+  );
+};
 
 export default ResultsDetailScreen;
