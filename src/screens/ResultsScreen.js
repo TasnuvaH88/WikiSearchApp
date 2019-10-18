@@ -7,8 +7,8 @@ import {
 import useResults from '../hooks/useResults';
 import { withNavigation } from 'react-navigation';
 
-const ResultsScreen = (search) => {
-  const userTerm = (search.navigation.state.params.search);
+const ResultsScreen = ({navigation}) => {
+  const userTerm = navigation.getParam('search');
   const [searchAPI, results] = useResults();
   
 

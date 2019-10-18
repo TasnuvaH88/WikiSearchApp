@@ -13,6 +13,9 @@ const getInfo = async id => {
         '&inprop=url&format=json'
     );
     setResult(response.data.query.pages);
+
+     
+
   } catch (err) {
     setErrMessage('Something went wrong');
   }
