@@ -8,8 +8,7 @@ export default () => {
   const searchAPI = async searchInput => {
     try {
       const response =
-        await axios.get('https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchInput +
-          '&format=json');
+        await axios.get(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${searchInput}&format=json`);
       setResults(response.data.query.search);
 
 

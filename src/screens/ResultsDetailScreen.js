@@ -8,11 +8,12 @@ import { withNavigation } from 'react-navigation';
 const ResultsDetailScreen = ( {navigation}) => {
   const pageid = navigation.getParam('pageid');
   const [getInfo, res, errMessage] = useResult();
-
+  //Makes a second API call to retrieve an object set to pageid val
 useEffect(() => {
  getInfo(pageid);
 }, []);
   
+//Function that allows navigation using unique ID to retrieve link prop
 var resLink;
  for (var p in res ) {
     resLink = res[p].fullurl;
