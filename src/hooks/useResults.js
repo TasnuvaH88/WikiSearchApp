@@ -11,7 +11,7 @@ export default () => {
         await axios.get('https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchInput +
           '&format=json');
       setResults(response.data.query.search);
-
+    console.log(response.data.query.pages.Object.fullurl);
 
     } catch (err) {
       setErrorMessage('Something went wrong');

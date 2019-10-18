@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
+import { withNavigation } from 'react-navigation';
 
 const HomeScreen = ({ navigation }) => {
   const [search, setSearch] = useState('');
@@ -14,4 +15,4 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default withNavigation(HomeScreen);

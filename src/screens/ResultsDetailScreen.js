@@ -2,26 +2,33 @@ import React, {useEffect} from 'react';
 import { View, Text, Button, Linking } from 'react-native';
 import useResult from '../hooks/useResult';
 import { withNavigation } from 'react-navigation';
+import { WebView} from 'react-native';
 
-const ResultsDetailScreen = () => {
+const ResultsDetailScreen = ( {navigation}) => {
   const pageid = navigation.getParam('pageid');
-  const [getInfo, res] = useResult();
- 
+  const [getInfo, res, errMessage] = useResult();
+
 useEffect(() => {
-  getInfo(pageid);
+ getInfo(pageid);
 }, []);
+
+console.log(res);
 
 
   return (
     <View>
-      <Text>{res.title}</Text>
+  
+      <Text>Link</Text>
       {errMessage ? <Text>{errMessage}</Text> : null}
       <Button
+        title = 'HOME'
         onPress={() => navigation.navigate('HomeScreen')}
-      >Go Back to Search Screen</Button>
+      ></Button>
       <Button
+       title='ANTHEM SITE'
         onPress={() => Linking.openURL('https://www.anthem.com')}>
-      Go to Anthem Site</Button>
+     </Button>
+    
     </View>
   );
 
