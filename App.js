@@ -13,9 +13,6 @@ const navigatorLinks = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      title: 'Wiki Search App'
-    }
   }
 );
 
