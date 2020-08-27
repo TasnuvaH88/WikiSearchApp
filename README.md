@@ -1,6 +1,6 @@
 # Research Organization
 
-The current iteration is a search application powered by WikiMedia API which uses React Native and JSX. State is managed using custom hooks. 
+The current iteration is a search application powered by WikiMedia API which uses Expo, React Native and JSX. State is managed using custom hooks. You will need the Expo app on your device to view.
 
 Future integrations on the backend will utilize Node, Express.js, MongoDB and AWS for user authentication. 
 1. Application will allow users to sign up, sign-in and take research notes. They will be able to highlight and search specific topics which will route to the Wikimedia search page. Users can create, save, edit and delete posts. 
